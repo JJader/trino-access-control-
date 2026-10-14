@@ -1,0 +1,42 @@
+{
+    "tables": [
+        {
+            "user": "admin",
+            "privileges": [
+                "SELECT",
+                "INSERT",
+                "DELETE",
+                "UPDATE",
+                "OWNERSHIP",
+                "GRANT_SELECT"
+            ]
+        },
+        {
+            "user": "usuario_bloqueado",
+            "catalog": "tpch",
+            "schema": "sf1",
+            "table": "orders",
+            "privileges": []
+        },
+        {
+            "user": "usuario_bloqueado",
+            "catalog": ".*",
+            "schema": ".*",
+            "table": ".*",
+            "privileges": [
+                "SELECT"
+            ],
+            "columns": [
+                {
+                    "name": "phone",
+                    "mask": "'XXX-XXX-XXXX'"
+                }
+            ]
+        },
+        {
+            "privileges": [
+                "SELECT"
+            ]
+        }
+    ]
+}

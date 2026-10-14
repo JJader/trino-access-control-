@@ -1,0 +1,35 @@
+services:
+  trino:
+    image: trinodb/trino:latest
+    container_name: trino
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./etc/access-control.properties:/etc/trino/access-control.properties
+      - ./etc/config.properties:/etc/trino/config.properties
+      - ./etc/rules.json:/etc/trino/rules.json
+
+    networks:
+      - trino-network
+
+  trino-query-ui:
+    build:
+      context: ./trino-query-ui
+      dockerfile: Dockerfile.dev
+    container_name: trino-query-ui
+    ports:
+      - "5173:5173" 
+    environment:
+      - VITE_TRINO_URL=http://trino:8080
+    depends_on:
+      - trino
+    networks:
+      - trino-network
+
+networks:
+  trino-network:
+    driver: bridge
