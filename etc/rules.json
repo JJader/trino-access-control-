@@ -12,14 +12,14 @@
             ]
         },
         {
-            "user": "usuario_bloqueado",
+            "user": "blocked_user",
             "catalog": "tpch",
             "schema": "sf1",
             "table": "orders",
             "privileges": []
         },
         {
-            "user": "usuario_bloqueado",
+            "user": "blocked_user",
             "catalog": ".*",
             "schema": ".*",
             "table": ".*",
